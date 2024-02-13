@@ -16,49 +16,57 @@
         <img src="food/burgers.jpeg" alt="Burgers, fries and fried chicken" />
         <label
           ><input
-            type="checkbox"
+            type="radio"
             name="food"
             value="Burgers, fries and fried chicken"
           />
-          burgers and fried chicken</label
-        >
-      </div>
-      <div class="food-item">
-        <img src="food/dog.jpeg" alt="dog" />
-        <label
-          ><input type="checkbox" name="food" value="hotdog" /> hotdog</label
+          KFC / Joulibee</label
         >
       </div>
       <div class="food-item">
         <img src="food/koreanfood.jpeg" alt="koreanfood" />
         <label
-          ><input type="checkbox" name="food" value="Korean food" /> korean
+          ><input type="radio" name="food" value="Korean food" /> korean
           food</label
         >
       </div>
       <div class="food-item">
-        <img src="food/pasta.jpeg" alt="pasta" />
-        <label><input type="checkbox" name="food" value="pasta" /> pasta</label>
+        <img src="food/Kichi.jpg" alt="kichi" />
+        <label><input type="radio" name="food" value="kichi" />Buffet</label>
       </div>
       <div class="food-item">
         <img src="food/pizza.jpeg" alt="pizza" />
-        <label><input type="checkbox" name="food" value="pizza" /> pizza</label>
+        <label><input type="radio" name="food" value="pizza" />Pizza</label>
       </div>
       <div class="food-item">
-        <img src="food/salad.jpeg" alt="salad" />
-        <label><input type="checkbox" name="food" value="salad" /> salad</label>
+        <img src="food/nuong.jpg" alt="nuong" />
+        <label><input type="radio" name="food" value="Nuong" />Đồ nướng</label>
       </div>
       <div class="food-item">
-        <img src="food/steak.jpeg" alt="steak" />
-        <label><input type="checkbox" name="food" value="steak" /> steak</label>
+        <img src="food/sanu.jpg" alt="sanu" />
+        <label><input type="radio" name="food" value="sanu" />Mỳ cay</label>
       </div>
       <div class="food-item">
         <img src="food/sushi.jpeg" alt="sushi" />
-        <label><input type="checkbox" name="food" value="sushi" /> sushi</label>
+        <label><input type="radio" name="food" value="sushi" /> sushi</label>
       </div>
     </div>
-    <button class="button" onclick="location.href='dessert.html'">
-      Continue UWU
-    </button>
+    <div class="foodbtn">
+      <iframe src="https://giphy.com/embed/S8XaNMnpHyyImbrk8j" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+      <button class="button" onclick="saveSelectionAndRedirect()">
+        Một món thoai nghĩ cho kỹ UWU
+      </button>
+    </div>
+    <script>
+      function saveSelectionAndRedirect() {
+        var selectedFood = document.querySelector('input[name="food"]:checked');
+        if (selectedFood) {
+          localStorage.setItem('selectedFood', selectedFood.value);
+          window.location.href = 'dessert.html';
+        } else {
+          alert('Chọn món đi đã.');
+        }
+      }
+    </script>
   </body>
 </html>

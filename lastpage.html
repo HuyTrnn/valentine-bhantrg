@@ -1,62 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="css/flower.css" />
-  </head>
-  <body>
-    <div id="thankyou"><b>Thank you for being my girlfriend</b></div>
-    <div class="flower">
-      <div class="f-wrapper">
-        <div class="flower__line"></div>
-        <div class="f">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__leaf flower__leaf--5"></div>
-          <div class="flower__leaf flower__leaf--6"></div>
-          <div class="flower__leaf flower__leaf--7"></div>
-          <div
-            class="flower__leaf flower__leaf--8 flower__fall-down--yellow"
-          ></div>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="css/flower.css" />
+</head>
+<body>
+  <div id="thankyou"><b>Thank you for being my girlfriend</b></div>
+  <div class="flower">
+    <div class="f-wrapper">
+      <div class="flower__line"></div>
+      <div class="f">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__leaf flower__leaf--5"></div>
+        <div class="flower__leaf flower__leaf--6"></div>
+        <div class="flower__leaf flower__leaf--7"></div>
+        <div
+          class="flower__leaf flower__leaf--8 flower__fall-down--yellow"
+        ></div>
       </div>
-
-      <div class="f-wrapper f-wrapper--2">
-        <div class="flower__line"></div>
-        <div class="f">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__leaf flower__leaf--5"></div>
-          <div class="flower__leaf flower__leaf--6"></div>
-          <div class="flower__leaf flower__leaf--7"></div>
-          <div
-            class="flower__leaf flower__leaf--8 flower__fall-down--pink"
-          ></div>
-        </div>
-      </div>
-
-      <div class="f-wrapper f-wrapper--3">
-        <div class="flower__line"></div>
-        <div class="f">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__leaf flower__leaf--5"></div>
-          <div class="flower__leaf flower__leaf--6"></div>
-          <div class="flower__leaf flower__leaf--7"></div>
-          <div
-            class="flower__leaf flower__leaf--8 flower__fall-down--purple"
-          ></div>
-        </div>
-      </div>
-      <div class="flower__glass"></div>
     </div>
-  </body>
+
+    <div class="f-wrapper f-wrapper--2">
+      <div class="flower__line"></div>
+      <div class="f">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__leaf flower__leaf--5"></div>
+        <div class="flower__leaf flower__leaf--6"></div>
+        <div class="flower__leaf flower__leaf--7"></div>
+        <div
+          class="flower__leaf flower__leaf--8 flower__fall-down--pink"
+        ></div>
+      </div>
+    </div>
+
+    <div class="f-wrapper f-wrapper--3">
+      <div class="flower__line"></div>
+      <div class="f">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__leaf flower__leaf--5"></div>
+        <div class="flower__leaf flower__leaf--6"></div>
+        <div class="flower__leaf flower__leaf--7"></div>
+        <div
+          class="flower__leaf flower__leaf--8 flower__fall-down--purple"
+        ></div>
+      </div>
+    </div>
+    <div class="flower__glass"></div>
+  </div>
+
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    // Initialize EmailJS with your user ID
+    emailjs.init('gzzFXzN_3Si_lA4CG');
+
+    // Function to retrieve data from localStorage
+    function retrieveDataFromLocalStorage() {
+      const selectedFood = localStorage.getItem('selectedFood');
+      const selectedDate = localStorage.getItem('selectedDate');
+      const selectedDessert = localStorage.getItem('selectedDessert');
+      const selectedActivity = localStorage.getItem('selectedActivity');
+
+      return {
+        selectedFood,
+        selectedDate,
+        selectedDessert,
+        selectedActivity
+      };
+    }
+
+    // Function to send data via EmailJS
+    function sendDataViaEmail() {
+      const userData = retrieveDataFromLocalStorage();
+
+      // Prepare your EmailJS parameters
+      const emailParams = {
+        to_email: 'recipient@example.com', // Change this to your recipient's email address
+        from_name: 'Your Name', // Change this to your name
+        message: `
+          Selected Food: ${userData.selectedFood}
+          Selected Date: ${userData.selectedDate}
+          Selected Dessert: ${userData.selectedDessert}
+          Selected Activity: ${userData.selectedActivity}
+        `
+      };
+
+      // Use EmailJS to send email
+      emailjs.send('service_eesmrm4', 'template_v2di4kb', emailParams)
+        .then(function(response) {
+          console.log('Email sent successfully!', response);
+        }, function(error) {
+          console.error('Failed to send email!', error);
+        });
+    }
+
+    // Call sendDataViaEmail whenever you want to send the data via email
+    // For example, you can call it on page load or on a specific event
+    sendDataViaEmail();
+  </script>
+</body>
 </html>

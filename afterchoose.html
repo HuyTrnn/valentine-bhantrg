@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page</title>
+  <link rel="stylesheet" href="css/lastpage.css" />
+</head>
+<body>
+  <div id="imageContainer">
+    <iframe id="image" src="" width="480" height="338" frameborder="0" class="giphy-embed" allowfullscreen></iframe>
+  </div>
+  <div id="textContainer">
+    <p id="message"></p>
+  </div>
+  
+  <script>
+    window.onload = function() {
+      var selectedActivity = localStorage.getItem('selectedActivity');
+      var image = document.getElementById('image');
+      var message = document.getElementById('message');
+      
+      if (selectedActivity === "tom") {
+        image.src = "https://giphy.com/embed/KbAQXyDyoULAe7zXmd"; // Update the source to the fun GIPHY URL
+        message.textContent = "Con mèo này vui rồi";
+      } else {
+        image.src = "https://giphy.com/embed/uxZJBBdhcsptm"; // Update the source to the boring GIPHY URL
+        message.textContent = "Con mèo này buồn vì không được đi nhà nghỉ vui lòng back lại để chọn lựa chọn khác";
+      }
+    };
+
+    setTimeout(function() {
+        window.location.href = 'lastpage.html';
+      }, 7000);
+  </script>
+</body>
+</html>

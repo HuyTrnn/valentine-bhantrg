@@ -1,77 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Activities</title>
-    <link rel="stylesheet" href="css/activities.css" />
-  </head>
-  <body>
-    <div id="activityquestion"><b>What are we doing after?</b></div>
-    <div class="activities-selection">
-      <div class="activity-item">
-        <img src="activities/aquarium.jpeg" alt="aquarium" />
-        <label
-          ><input
-            type="checkbox"
-            name="activities"
-            value="aquarium"
-          />aquarium</label
-        >
-      </div>
-      <div class="activity-item">
-        <img src="activities/arcade.jpeg" alt="arcade" />
-        <label
-          ><input
-            type="checkbox"
-            name="activities"
-            value="arcade"
-          />arcade</label
-        >
-      </div>
-      <div class="activity-item">
-        <img src="activities/cinema.jpeg" alt="cinema" />
-        <label
-          ><input
-            type="checkbox"
-            name="activities"
-            value="cinema"
-          />cinema</label
-        >
-      </div>
-      <div class="activity-item">
-        <img src="activities/keramika.jpeg" alt="ceramics" />
-        <label
-          ><input
-            type="checkbox"
-            name="activities"
-            value="ceramics"
-          />ceramics</label
-        >
-      </div>
-      <div class="activity-item">
-        <img src="activities/kunsthalle.jpeg" alt="kunsthalle" />
-        <label
-          ><input
-            type="checkbox"
-            name="activities"
-            value="kunsthalle"
-          />exhibition</label
-        >
-      </div>
-      <div class="activity-item">
-        <img src="activities/park.jpeg" alt="park.jpeg" />
-        <label
-          ><input
-            type="checkbox"
-            name="activities"
-            value="park.jpeg"
-          />park</label
-        >
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Activities</title>
+  <link rel="stylesheet" href="css/activities.css" />
+  <style>
+    .selected {
+      font-size: 1.5em; /* Make the font size bigger */
+    }
+  </style>
+</head>
+<body>
+  <div id="activityquestion"><b>What are we doing after?</b></div>
+  <div class="activities-selection">
+    <div class="activity-item">
+      <img src="activities/tom.jpg" alt="tom" />
+      <label
+        ><input
+          type="radio"
+          name="activities"
+          value="tom"
+          onclick="handleSelection(this)"
+        />Nhà nghỉ</label
+      >
     </div>
-    <button class="button" onclick="location.href='lastpage.html'">
-      Last page
-    </button>
-  </body>
+    <div class="activity-item">
+      <img src="activities/arcade.jpeg" alt="arcade" />
+      <label
+        ><input
+          type="radio"
+          name="activities"
+          value="arcade"
+          onclick="handleSelection(this)"
+        />Gắp thú</label
+      >
+    </div>
+    <div class="activity-item">
+      <img src="activities/cinema.jpeg" alt="cinema" />
+      <label
+        ><input
+          type="radio"
+          name="activities"
+          value="cinema"
+          onclick="handleSelection(this)"
+        />Coi phim</label
+      >
+    </div>
+    <div class="activity-item">
+      <img src="activities/keramika.jpeg" alt="ceramics" />
+      <label
+        ><input
+          type="radio"
+          name="activities"
+          value="ceramics"
+          onclick="handleSelection(this)"
+        />Tô tượng</label
+      >
+    </div>
+    <div class="activity-item">
+      <img src="activities/park.jpeg" alt="park.jpeg" />
+      <label
+        ><input
+          type="radio"
+          name="activities"
+          value="park.jpeg"
+          onclick="handleSelection(this)"
+        />Đi dạo</label
+      >
+    </div>
+  </div>
+  <button class="button" onclick="saveSelectionAndRedirect()">
+    Last page
+  </button>
+
+  <script>
+    var alertShown = false;
+
+    function handleSelection(element) {
+      if (element.value !== "tom" && !alertShown) {
+        alert("Tại sao không chọn nhà 'Nhà nghỉ'.");
+        alertShown = true;
+      }
+    }
+
+    function saveSelectionAndRedirect() {
+      var selectedActivity = document.querySelector('input[name="activities"]:checked');
+      if (selectedActivity) {
+        localStorage.setItem('selectedActivity', selectedActivity.value);
+        window.location.href = 'afterchoose.html';
+      } else {
+        alert('Please select an activity.');
+      }
+    }
+  </script>
+</body>
 </html>

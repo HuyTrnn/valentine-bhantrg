@@ -38,3 +38,8 @@ body {
   border-radius: 12px;
   border: 2px solid #ffe3e1;
 }
+.foodbtn {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
